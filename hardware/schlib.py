@@ -19,7 +19,7 @@ import uuid as _uuid
 
 from sexp import Sym, dump, get_flat, pins
 
-KICAD_SHARE = "/Applications/KiCad/KiCad.app/Contents/SharedSupport"
+KICAD_SHARE = os.environ.get("KICAD_SHARE", "/Applications/KiCad/KiCad.app/Contents/SharedSupport")  # macOS default
 STUB = 2.54
 
 # Rails drawn as power symbols. Anything else becomes a net label.

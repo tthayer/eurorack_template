@@ -1,7 +1,8 @@
 """Minimal KiCad s-expression parser/serializer and symbol-library helpers."""
 import re
 
-SYMDIR = "/Applications/KiCad/KiCad.app/Contents/SharedSupport/symbols"
+import os
+SYMDIR = os.path.join(os.environ.get("KICAD_SHARE", "/Applications/KiCad/KiCad.app/Contents/SharedSupport"), "symbols")
 
 
 class Sym(str):

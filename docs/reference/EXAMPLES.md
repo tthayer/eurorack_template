@@ -1,5 +1,8 @@
 # Worked examples (read-only — never edit these repos)
 
+These are the template author's own projects, kept private (one adapts a design published for
+personal use only). If you don't have them, the patterns below are the useful part.
+
 | Project | Path | What to learn from it |
 |---|---|---|
 | th_xr_vco | `~/projects/th_xr_vco` | Adapting a published ±15 V analog design: original-circuit table with source refs kept, change tables (original → Eurorack value + reason), ±10 V references, switch pole/position table, calibration order, acceptance criteria, deferred options. Docs-only (Phase 0/1). |

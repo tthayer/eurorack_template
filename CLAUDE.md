@@ -1,6 +1,6 @@
 # Agent operating manual — Eurorack module (through-hole, protoboard)
 
-You are planning and documenting a DIY Eurorack module that Tony will build by hand on
+You are planning and documenting a DIY Eurorack module that the builder will make by hand on
 **pad-per-hole perfboard with through-hole parts only**. There is no PCB, no SMD part and
 no fab step. Follow this file exactly. When it conflicts with your general knowledge,
 this file and `docs/reference/` win. Where they are silent, ask instead of guessing.
@@ -31,13 +31,13 @@ this file and `docs/reference/` win. Where they are silent, ask instead of guess
    bond expo pairs and their tempco instead.
 9. **Stay in this repo.** Other projects (`~/projects/*`) are read-only references. Never
    edit, commit or push them, and don't offer to.
-10. **Don't push or publish** unless Tony asks. Adapted designs may carry "personal use
+10. **Don't push or publish** unless the builder asks. Adapted designs may carry "personal use
     only" terms; record them in README and keep the repo private.
 
 ## Workflow
 
 Work strictly phase by phase (`docs/PLAN.md`). Each phase ends with a **gate**: run the
-listed commands, fix failures, then stop and summarize for Tony. Don't start the next
+listed commands, fix failures, then stop and summarize for the builder. Don't start the next
 phase until he says so.
 
 | Phase | Output | Gate command |
@@ -51,7 +51,7 @@ phase until he says so.
 
 ## How to do each phase
 
-**Phase 0.** Ask Tony (in one message, max 4 questions) whatever you cannot infer: what the
+**Phase 0.** Ask the builder (in one message, max 4 questions) whatever you cannot infer: what the
 module does, inputs/outputs, controls, target HP, any source design. Fill SPEC §1–3. Pick
 HP from the panel-fit table in `docs/reference/EURORACK.md`; justify it in one line.
 
@@ -73,7 +73,7 @@ every PNG** to check it: crossed or missing wires are common.
 **Phase 4.** Fill `docs/panel.yml` (hole positions, sizes from PARTS.md) and run
 `make panel`. Check that the drill positions match the control positions in LAYOUT.md.
 
-**Phase 5.** Tony builds. You help interpret measurements against SPEC values. Never ask
+**Phase 5.** The builder builds. You help interpret measurements against SPEC values. Never ask
 him to run loud or stressful tests without saying first what he will hear or see.
 
 ## Stop and ask when

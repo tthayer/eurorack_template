@@ -43,7 +43,7 @@ headroom needs the bias check (CALCS C6).
 **L9. SMD-only parts.** Matched pairs, MCP4725, OPA4197 and others are SMD-only.
 → Use breakouts (DIP-pinned) or THT alternatives (PARTS.md). Don't "temporarily" spec SMD.
 
-**L10. No transistor matching.** Tony's experience: modern 2N3904s are consistent enough.
+**L10. No transistor matching.** In practice, modern 2N3904s are consistent enough.
 Thermal bonding still matters.
 
 **L11. WireViz gotchas.**
