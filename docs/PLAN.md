@@ -1,7 +1,7 @@
 # __MODULE__ — phased plan
 
 Each phase ends at a gate. At a gate: run the commands, fix what fails, summarize for
-the builder, and **stop**. `docs/SPEC.md` is the authority; when a later phase changes a value,
+the Builder, and **stop**. `docs/SPEC.md` is the authority; when a later phase changes a value,
 update SPEC first.
 
 ## Phase 0 — Requirements
@@ -9,14 +9,14 @@ update SPEC first.
 - [ ] SPEC §2 jacks and controls
 - [ ] SPEC §3 HP (justified), depth, board split, current estimate
 - [ ] Source design located and read (schematic viewed pin by pin), license noted
-- **Gate:** `make check` passes. The builder approves the I/O, controls and HP.
+- **Gate:** `make check` passes. The Builder approves the I/O, controls and HP.
 
 ## Phase 1 — Circuit design
 - [ ] SPEC §5 one subsection per block, every value with its calculation
 - [ ] SPEC §6 harness/header pin map (if more than one board)
 - [ ] SPEC §7 BOM (THT only), §8 calibration, §9 acceptance criteria
 - [ ] DECISIONS.md: every non-obvious choice logged
-- **Gate:** `make check STRICT=1` passes (no TBD, no SMD). The builder reviews.
+- **Gate:** `make check STRICT=1` passes (no TBD, no SMD). The Builder reviews.
 
 ## Phase 2 — Schematic and netlist checks
 - [ ] `hardware/gen_sch.py`: example replaced by the SPEC blocks, net names verbatim
