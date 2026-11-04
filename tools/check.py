@@ -29,14 +29,15 @@ def report(ok, msg, warn=False):
         fails += 1
 
 
+PLACEHOLDER = "__" + "MODULE" + "__"  # split so new_module.sh does not rewrite it
 is_template = os.path.exists(os.path.join(ROOT, ".template"))
 
 # 1. Placeholders replaced (skipped in the template repo itself)
 if not is_template:
     hits = [p for p in glob.glob(os.path.join(ROOT, "**", "*"), recursive=True)
             if os.path.isfile(p) and p.endswith((".md", ".py", ".yml", ".csv", ".sh"))
-            and "__MODULE__" in open(p, errors="ignore").read()]
-    report(not hits, "no __MODULE__ placeholders left" + (f": {[os.path.relpath(h, ROOT) for h in hits]}" if hits else ""))
+            and PLACEHOLDER in open(p, errors="ignore").read()]
+    report(not hits, "no template placeholders left" + (f": {[os.path.relpath(h, ROOT) for h in hits]}" if hits else ""))
 
 # 2. SPEC structure and TBDs
 spec = rd("docs/SPEC.md")
