@@ -1,0 +1,74 @@
+# __MODULE__ main perfboard: power entry, rails, ICs, harness pads.
+# Source of truth for nets/values: docs/SPEC.md (and hardware/gen_sch.py generated from it).
+# Render: make wiring. Panel side is panel.yml. EXAMPLE content: replace U1 and the pads.
+
+metadata:
+  title: __MODULE__ - main board wiring
+
+options:
+  fontname: Helvetica
+  bgcolor: WH
+  color_mode: short
+
+connectors:
+  BUS:
+    type: Eurorack bus board (16-pin socket; a 10-pin cable uses pins 1-10)
+    subtype: red stripe = pin 1 (-12V)
+    pins: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    pinlabels: [-12V, -12V, GND, GND, GND, GND, GND, GND, +12V, +12V]
+  J1:
+    type: J1 2x5 shrouded header
+    subtype: red stripe = pin 1 (-12 V). No +5 V on a 10-pin header
+    notes: "Perfboard: bridge pads only within a pair (1+2, 3+4, 5+6, 7+8, 9+10). D1 1N5819: A = pins 9/10, K = +12V bus. D2 1N5819: K = pins 1/2, A = -12V bus. C1/C2 22uF + C3/C4 100nF per rail after the diodes."
+    pins: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    pinlabels: [-12V, -12V, GND, GND, GND, GND, GND, GND, +12V, +12V]
+  RAILS:
+    type: Perfboard buses (after D1/D2)
+    pins: [P12, GND, M12]
+    pinlabels: [+12V bus (D1 K), GND bus, -12V bus (D2 A)]
+  U1:
+    type: U1 TL072 (DIP-8, socketed)
+    subtype: C5 100nF pin 8 to GND, C6 100nF pin 4 to GND
+    notes: "EXAMPLE. R1 100k IN → pin 2; R2 100k pin 2 ↔ pin 1; R3 1k pin 1 → OUT pad. Unit B unused: pin 5 GND, pin 6 ↔ pin 7."
+    pins: [1, 2, 3, 4, 5, 6, 7, 8]
+    pinlabels:
+      - 1 OUT A → R3 1k → OUT
+      - 2 -IN A (R1 from IN, R2 from pin 1)
+      - 3 +IN A → GND
+      - 4 V- (-12V)
+      - 5 +IN B → GND
+      - 6 -IN B ↔ pin 7
+      - 7 OUT B (unused follower)
+      - 8 V+ (+12V)
+  PADS:
+    type: Harness pads (board edge)
+    subtype: one pad per panel wire; mirrors panel.yml
+    pins: [1, 2, 3]
+    pinlabels: [GND, IN (→ R1), OUT (after R3)]
+
+cables:
+  W_PWR:
+    type: Eurorack 10-to-10 (or 16-to-10) ribbon
+    wirecount: 10
+    colors: [RD, GY, GY, GY, GY, GY, GY, GY, GY, GY]
+    category: bundle
+  W_RAIL:
+    type: header → diodes → buses
+    wirecount: 3
+    colors: [RD, BK, BU]
+    wirelabels: [+12V via D1, GND, -12V via D2]
+  W_U1:
+    type: U1 supply
+    wirecount: 4
+    colors: [RD, BU, BK, BK]
+
+connections:
+  - - BUS: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    - W_PWR: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    - J1: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  - - J1: [9, 3, 1]
+    - W_RAIL: [1, 2, 3]
+    - RAILS: [P12, GND, M12]
+  - - RAILS: [P12, M12, GND, GND]
+    - W_U1: [1, 2, 3, 4]
+    - U1: [8, 4, 3, 5]

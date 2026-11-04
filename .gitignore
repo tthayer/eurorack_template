@@ -1,0 +1,7 @@
+.DS_Store
+__pycache__/
+hardware/erc.json
+hardware/*.xml
+hardware/*.kicad_prl
+hardware/*-backups/
+hardware/fp-info-cache

@@ -1,0 +1,58 @@
+# __MODULE__ panel wiring: jacks/pots/switches/LEDs → harness pads on the main board.
+# Source of truth: docs/SPEC.md §2 and §6. Render: make wiring. EXAMPLE: one input, one output.
+
+metadata:
+  title: __MODULE__ - panel wiring
+
+options:
+  fontname: Helvetica
+  bgcolor: WH
+  color_mode: short
+
+connectors:
+  PADS:
+    type: Harness pads (main board edge)
+    subtype: mirrors PADS in system.yml
+    pins: [1, 2, 3]
+    pinlabels: [GND, IN, OUT]
+  PGND:
+    type: Panel ground bus
+    subtype: bare wire along the jack sleeves, one feed from PADS.1
+    pins: [1, 2, 3]
+    pinlabels: [from PADS.1, J2 sleeve, J3 sleeve]
+  J2:
+    type: J2 IN (Thonkiconn PJ398SM)
+    subtype: TN unused (unpatched input floats to R1 → virtual ground = 0 V)
+    pins: [T, TN, S]
+  J3:
+    type: J3 OUT (Thonkiconn PJ398SM)
+    pins: [T, TN, S]
+
+cables:
+  W_PANEL:
+    type: pads to panel
+    wirecount: 3
+    colors: [BK, WH, YE]
+    wirelabels: [GND, IN, OUT]
+    category: bundle
+  W_GND:
+    type: ground bus taps
+    wirecount: 2
+    colors: [BK, BK]
+
+connections:
+  - - PADS: [1]
+    - W_PANEL: [1]
+    - PGND: [1]
+  - - PADS: [2]
+    - W_PANEL: [2]
+    - J2: [T]
+  - - PADS: [3]
+    - W_PANEL: [3]
+    - J3: [T]
+  - - PGND: [2]
+    - W_GND: [1]
+    - J2: [S]
+  - - PGND: [3]
+    - W_GND: [2]
+    - J3: [S]

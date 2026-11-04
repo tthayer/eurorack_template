@@ -1,0 +1,6 @@
+# hp=6
+# Drill spec for the front panel. mm from the TOP-LEFT corner, FRONT view.
+# hole: jack 6.0, 9 mm pot 7.0, mini toggle 6.2, 3 mm LED 3.2 (EURORACK.md). EXAMPLE rows: replace.
+ref,label,x,y,hole
+J2,IN,15,90,6.0
+J3,OUT,15,108,6.0
