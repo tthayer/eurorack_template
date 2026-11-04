@@ -25,7 +25,7 @@ else
 fi
 
 cd "$dest"
-rm -f .template
+rm -f .template LICENSE   # template license; the module's license is the Builder's choice
 mv README.module.md README.md
 grep -rlE '__MODULE__|__HP__' --exclude-dir=.git --exclude=new_module.sh . | while read -r f; do
   sed -i.bak -e "s/__MODULE__/$name/g" -e "s/__HP__/$hp/g" "$f" && rm -f "$f.bak"

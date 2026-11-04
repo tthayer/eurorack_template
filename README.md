@@ -170,3 +170,10 @@ These suit the author's builds. If yours differ (16-pin power, PCBs), change
 Eurorack power can destroy modules and, through a shorted ribbon, other modules in
 the case. Follow the checks in `docs/LAYOUT.md` and `docs/BRINGUP.md` before first power-up,
 and use a current-limited supply for the smoke test. You build at your own risk.
+
+## License
+
+The template is released under the [MIT License](LICENSE). `new_module.sh` doesn't
+copy the license into new modules: each module's license is yours to choose, and a
+module adapted from a published design must respect that design's terms (some are
+"personal use only").
