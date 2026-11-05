@@ -38,7 +38,7 @@ this file and `docs/reference/` win. Where they are silent, ask instead of guess
 
 Work strictly phase by phase (`docs/PLAN.md`). Each phase ends with a **gate**: run the
 listed commands, fix failures, then stop and summarize for the Builder. Don't start the next
-phase until he says so.
+phase until the Builder says so.
 
 | Phase | Output | Gate command |
 |---|---|---|
@@ -46,7 +46,7 @@ phase until he says so.
 | 1 Circuit design | SPEC §4–8 filled: every block, values with math, BOM, calibration, acceptance | `make check STRICT=1` |
 | 2 Schematic | `hardware/gen_sch.py`, `hardware/check_netlist.py` | `make erc` |
 | 3 Wiring + layout | `docs/wiring/*.yml`, `docs/LAYOUT.md` | `make wiring check` + look at every PNG |
-| 4 Panel | `docs/panel.yml` drill spec | `make panel`, print at 100 %, test-fit parts |
+| 4 Panel | `docs/panel.csv` drill spec | `make panel`, print at 100 %, test-fit parts |
 | 5 Build + bring-up | `docs/BRINGUP.md` filled while building | every SPEC acceptance box ticked |
 
 ## How to do each phase
@@ -70,11 +70,11 @@ Use SPEC net names verbatim. For every SPEC connection, add a `check()` to
 `docs/LAYOUT.md` (grid, rails, placement table). Render with `make wiring` and **open
 every PNG** to check it: crossed or missing wires are common.
 
-**Phase 4.** Fill `docs/panel.yml` (hole positions, sizes from PARTS.md) and run
+**Phase 4.** Fill `docs/panel.csv` (hole positions, sizes from `docs/reference/EURORACK.md`) and run
 `make panel`. Check that the drill positions match the control positions in LAYOUT.md.
 
 **Phase 5.** The Builder builds. You help interpret measurements against SPEC values. Never ask
-him to run loud or stressful tests without saying first what he will hear or see.
+the Builder to run loud or stressful tests without saying first what they will hear or see.
 
 ## Stop and ask when
 

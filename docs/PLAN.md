@@ -30,7 +30,7 @@ update SPEC first.
 - **Gate:** `make wiring check` passes; every PNG opened and checked for crossed/missing wires.
 
 ## Phase 4 — Panel
-- [ ] `docs/panel.yml` hole list (positions match LAYOUT.md, sizes from EURORACK.md)
+- [ ] `docs/panel.csv` hole list (positions match LAYOUT.md, sizes from EURORACK.md)
 - **Gate:** `make panel`; print `docs/panel_drill.pdf` at 100 %, check the scale bar, test-fit the parts.
 
 ## Phase 5 — Build, bring-up, calibration
