@@ -67,8 +67,8 @@ cd <your_module>
 ```sh
 git clone https://github.com/tthayer/eurorack_template.git
 cd eurorack_template
-./new_module.sh my_module 8               # creates ~/projects/my_module with a fresh git repo
-./new_module.sh my_module 8 ~/synth       # or choose the parent folder
+./new_module.sh my_module 8               # creates ../my_module (next to the template) with a fresh git repo
+./new_module.sh my_module 8 /path/to/dir  # or choose the parent folder
 ```
 
 Either way, the script fills in the module name and HP, swaps in the module README,

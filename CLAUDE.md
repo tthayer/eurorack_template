@@ -29,7 +29,7 @@ this file and `docs/reference/` win. Where they are silent, ask instead of guess
    view it. Never describe a connection you haven't seen (LESSONS L4).
 8. **No transistor matching steps.** Modern 2N3904/2N3906 are consistent enough; thermally
    bond expo pairs and their tempco instead.
-9. **Stay in this repo.** Other projects (`~/projects/*`) are read-only references. Never
+9. **Stay in this repo.** Anything outside this repo (other modules, reference projects) is read-only. Never
    edit, commit or push them, and don't offer to.
 10. **Don't push or publish** unless the Builder asks. Adapted designs may carry "personal use
     only" terms; record them in README and keep the repo private.

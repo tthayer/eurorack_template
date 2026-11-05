@@ -1,16 +1,17 @@
 #!/bin/sh
 # Create a new module from this template.
 #
-#   ./new_module.sh <name> [hp] [parent_dir]   copy into <parent_dir>/<name> (default ~/projects) with a new git repo
+#   ./new_module.sh <name> [hp] [parent_dir]   copy into <parent_dir>/<name> (default: the folder that holds this template) with a new git repo
 #   ./new_module.sh --here <name> [hp]         convert THIS checkout in place (after GitHub "Use this template")
 #
 # Commits use your normal git identity. Override with EURORACK_GIT_NAME / EURORACK_GIT_EMAIL.
 set -e
 here=; [ "$1" = "--here" ] && { here=1; shift; }
-name=$1; hp=${2:-TBD}; parent=${3:-$HOME/projects}
+name=$1; hp=${2:-TBD}; parent=$3
 [ -n "$name" ] || { sed -n '2,8p' "$0"; exit 1; }
 echo "$name" | grep -qE '^[a-z0-9_]+$' || { echo "name: lowercase letters, digits, underscores"; exit 1; }
 src=$(cd "$(dirname "$0")" && pwd)
+[ -n "$parent" ] || parent=$(dirname "$src")
 [ -f "$src/.template" ] || { echo "$src is not the template (no .template marker); already converted?"; exit 1; }
 
 if [ -n "$here" ]; then
